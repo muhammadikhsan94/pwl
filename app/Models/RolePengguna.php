@@ -14,5 +14,11 @@ class RolePengguna extends Model
     protected $fillable = [
         'id_pengguna',
         'id_role',
+        'last_sync'
     ];
+
+    public function peran()
+    {
+        return $this->belongsTo('\App\Models\Role','id_role','id');
+    }
 }
