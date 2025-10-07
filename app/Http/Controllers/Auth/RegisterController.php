@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'username' => $req->username,
             'email' => $req->email,
             'password' => \Hash::make($req->password),
-            'aktif' => 1,
+            'aktif' => 0,
             'soft_delete' => 0,
             'created_by' => $uuid
         ]);

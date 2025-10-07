@@ -378,9 +378,9 @@
             <form action="{{ route('auth.login.authenticate') }}" method="post">
                 @csrf
                 <input type="text" id="username" class="fadeIn second" name="username"
-                    placeholder="Masukkan username">
+                    placeholder="Masukkan username" required>
                 <input type="password" id="password" class="fadeIn third" name="password"
-                    placeholder="Masukkan password">
+                    placeholder="Masukkan password" required>
 
                 <button type="submit" class="fadeIn fourth">LOGIN</button>
             </form>

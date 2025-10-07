@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\{
     LoginController, RegisterController
 };
 use App\Http\Controllers\{
-    HomeController, PenggunaController
+    HomeController, PenggunaController, PeranController
 };
 
 /*
@@ -34,6 +34,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('', [PenggunaController::class, 'index'])->name('index');
         Route::get('data', [PenggunaController::class, 'data'])->name('data');
         Route::get('{id}', [PenggunaController::class, 'edit'])->name('edit');
+        Route::put('{id}', [PenggunaController::class, 'update'])->name('update');
+    });
+
+    Route::prefix('peran')->name('peran.')->group(function() {
+        Route::get('', [PeranController::class, 'index'])->name('index');
+        Route::get('data', [PeranController::class, 'data'])->name('data');
+        Route::get('create', [PeranController::class, 'create'])->name('create');
+        Route::post('', [PeranController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [PeranController::class, 'edit'])->name('edit');
+        Route::put('{id}', [PeranController::class, 'update'])->name('update');
+        Route::delete('{id}', [PeranController::class, 'destroy'])->name('destroy');
     });
 });
 

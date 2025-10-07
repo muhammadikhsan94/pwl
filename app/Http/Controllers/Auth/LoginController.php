@@ -32,10 +32,14 @@ class LoginController extends Controller
         );
         Session::flush();
 
+        // select * from pengguna where username = $req->username LIMIT 1
         $pengguna = Pengguna::where('username', $req->username)->first();
         if(!$pengguna) {
             return redirect()->back()->with(['error' => 'Data tidak ditemukan!']);
         } else {
+            if($pengguna->aktif!=1) {
+                return redirect()->back()->with(['warning' => 'Data pengguna belum divalidasi!']);
+            }
             if(Hash::check($req->password, $pengguna->password)) {
                 Auth::loginUsingId($pengguna->id);
                 return redirect()->route('home');
